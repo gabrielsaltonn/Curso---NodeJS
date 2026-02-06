@@ -12,11 +12,11 @@ const __dirname = path.dirname(__filename)
 
 // Criando algumas rotas
 app.get('/', function(req, res){
-    res.sendFile(__dirname + "/html/index.html")
+    res.sendFile(path.join(__dirname, 'html', 'index.html'))
 })
 
 app.get('/Sobre', function(req, res){
-    res.send('Sobre:')
+    res.sendFile(path.join(__dirname, 'html', 'sobre.html'))
 })
 
 app.get('/blog', function(req, res){

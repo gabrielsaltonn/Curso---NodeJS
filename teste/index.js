@@ -1,39 +1,29 @@
-// Chamando o express
 import express from 'express'
-//Importando caminho pelo ES Modules (Node moderno)
+import { engine } from 'express-handlebars'
+import { Sequelize } from 'sequelize'
 import path from 'path'
 import { fileURLToPath } from 'url'
 
-const app = express()
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
+const app = express()
 
+app.engine('handlebars', engine({
+    defaultLayout: 'main'
+}))
+app.set('view engine', 'handlebars')
+app.set('views', path.join(__dirname, 'views'))
 
-// Criando algumas rotas
-app.get('/', function(req, res){
-    res.sendFile(path.join(__dirname, 'html', 'index.html'))
+const sequeliza = new Sequelize("teste", "root", "11234", {
+    host: "localhost",
+    dialect: "mysql"
 })
 
-app.get('/Sobre', function(req, res){
-    res.sendFile(path.join(__dirname, 'html', 'sobre.html'))
+app.get('/cad', function(req, res){
+    res.render('formulario')
 })
 
-app.get('/blog', function(req, res){
-    res.send('Blog')
-})
-
-
-//Caminho com um parâmetro '/:nome' por exepmlo.
-app.get('/ola/:cargo/:nome/:cor', function(req, res){
-    res.send("<h1>Ola "+req.params.nome+"</h1>"+"<h2>Seu cargo é: "+req.params.cargo+"</h2>"+"<h3>Sua cor preferida é: "+req.params.cor+"</h3>")
-    // res.send("<h2>Seu cargo é: "+req.params.cargo+"</h2>")
-    // res.send("<h3>Sua cor preferida é: "+req.params.cor+"</h3>") 
-    // //O send só pode ser chamado uma vez. 
-})
-
-//Criando um servidor local
-//Deve ser sempre a última linha do código.
-app.listen(3000, function(){
-    console.log("Server rodando...")
+app.listen(3000, () => {
+    console.log("Servidor rodando em http://localhost:3000")
 })

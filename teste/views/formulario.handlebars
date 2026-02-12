@@ -1,7 +1,17 @@
-<form action="">
+<form action="/add" method="post">
     <h1>Título</h1>
-    <input type="text" name="titulo" id="titulo">
-    <section>Conteúdo</section>
+
+    <section id="serieNum">Número de série:</section>
+    <input type="text" name="numSerie" id="numSerie">
+
+    <section id="ipImp">Ip:</section>
+    <input type="text" name="ip" id="ip">
+
+    <section id="modImp">Modelo:</section>
+    <input type="text" name="modelo" id="modelo">
+
+    <section>Detalhes:</section>
     <textarea name="conteudo" id="conteudo"></textarea>
-    <button type="submit">Cadastrar impressora</button>
+    <button type="submit" id="enviar">Cadastrar impressora</button>
+
 </form>

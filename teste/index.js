@@ -1,9 +1,9 @@
 import express from 'express'
 import { engine } from 'express-handlebars'
-import { Sequelize } from 'sequelize'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import bodyParser from 'body-parser'
+import sequelize from './models/db'
 
 //Cria variável como ferramenta express
 const app = express()
@@ -24,15 +24,8 @@ app.engine('handlebars', engine({
 app.set('view engine', 'handlebars')
 app.set('views', path.join(__dirname, 'views'))
 
-
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
-
-//Conectando banco de dados ao arquivo
-const sequelize = new Sequelize("teste", "root", "11234", {
-    host: "localhost",
-    dialect: "mysql"
-})
 
 // Criando módulos / rotas
 app.get('/cad', function(req, res){

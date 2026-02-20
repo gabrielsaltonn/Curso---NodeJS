@@ -2,8 +2,8 @@ import express from 'express'
 import { engine } from 'express-handlebars'
 import path from 'path'
 import { fileURLToPath } from 'url'
-import bodyParser from 'body-parser'
-import sequelize from './models/db'
+import sequelize from './models/db.js'
+import Post from './models/Post.js'
 
 //Cria variável como ferramenta express
 const app = express()
@@ -24,20 +24,38 @@ app.engine('handlebars', engine({
 app.set('view engine', 'handlebars')
 app.set('views', path.join(__dirname, 'views'))
 
-app.use(bodyParser.urlencoded({extended: false}))
-app.use(bodyParser.json())
+app.use(express.urlencoded({extended: false}))
+app.use(express.json())
 
 // Criando módulos / rotas
+
+app.get('/', function(req, res){
+    res.render('home')
+})
+
 app.get('/cad', function(req, res){
     res.render('formulario')
 })
 
-app.post('/add', function(req, res){
-    req.body.numSerie
-    res.send('Formulário recebido! '+req.body.numSerie)
+app.post('/add', async function(req, res){
+    try {
+        await Post.create({
+            numSerie: req.body.numSerie,
+            modeloImp: req.body.modeloImp,
+            ipAddress: req.body.ipAddress,
+            bucFila: req.body.bucFila,
+            setor: req.body.setor,
+            coluna: req.body.coluna
+        })
+        res.redirect('/')
+    } catch (erro) {
+        res.send("Falha ao criar post: " + erro)
+    }
 })
 
 // Rota com o servidor local
-app.listen(3000, () => {
-    console.log("Servidor rodando em http://localhost:3000")
+sequelize.sync().then(() => {
+    app.listen(3000, () => {
+        console.log("Servidor rodando em http://localhost:3000")
+    })
 })

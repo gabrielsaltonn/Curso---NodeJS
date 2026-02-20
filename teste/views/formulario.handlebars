@@ -1,17 +1,23 @@
 <form action="/add" method="post">
-    <h1>Título</h1>
+    <h1>Cadastrar Impressora</h1>
 
-    <section id="serieNum">Número de série:</section>
-    <input type="text" name="numSerie" id="numSerie">
+    <label>Número de série:</label>
+    <input type="text" name="numSerie" required>
 
-    <section id="ipImp">Ip:</section>
-    <input type="text" name="ip" id="ip">
+    <label>Modelo:</label>
+    <input type="text" name="modeloImp" required>
 
-    <section id="modImp">Modelo:</section>
-    <input type="text" name="modelo" id="modelo">
+    <label>IP:</label>
+    <input type="text" name="ipAddress">
 
-    <section>Detalhes:</section>
-    <textarea name="conteudo" id="conteudo"></textarea>
-    <button type="submit" id="enviar">Cadastrar impressora</button>
+    <label>BUC/Fila:</label>
+    <input type="text" name="bucFila">
 
+    <label>Setor:</label>
+    <input type="text" name="setor" required>
+
+    <label>Coluna:</label>
+    <input type="text" name="coluna" required>
+
+    <button type="submit">Cadastrar impressora</button>
 </form>

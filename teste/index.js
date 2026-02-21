@@ -42,10 +42,10 @@ app.post('/add', async function(req, res){
         await Post.create({
             numSerie: req.body.numSerie,
             modeloImp: req.body.modeloImp,
-            ipAddress: req.body.ipAddress,
-            bucFila: req.body.bucFila,
-            setor: req.body.setor,
-            coluna: req.body.coluna
+            ipAddress: req.body.ipAddress || null,
+            bucFila: req.body.bucFila || null,
+            setor: req.body.setor || null,
+            coluna: req.body.coluna || null
         })
         res.redirect('/')
     } catch (erro) {

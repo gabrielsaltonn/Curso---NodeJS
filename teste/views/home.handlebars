@@ -1,1 +1,16 @@
-<h1>Impressora cadastrada</h1>
+<div style="text-align: center;">
+    <h1>Impressoras cadastradas:</h1>
+
+    <table border="1" style="margin: 20px auto;">
+        <tr>
+            <th>Nº Série</th>
+            <th>Modelo</th>
+        </tr>
+        {{#each posts}}
+        <tr>
+            <td>{{numSerie}}</td>
+            <td>{{modeloImp}}</td>
+        </tr>
+        {{/each}}
+    </table>
+</div>

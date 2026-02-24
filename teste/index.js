@@ -29,8 +29,10 @@ app.use(express.json())
 
 // Criando módulos / rotas
 
-app.get('/', function(req, res){
-    res.render('home')
+app.get('/', async function(req, res){
+    const posts = await Post.findAll({ raw: true })
+    console.log(posts)
+    res.render('home', { posts: posts })
 })
 
 app.get('/cad', function(req, res){

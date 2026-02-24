@@ -2,9 +2,15 @@ import { DataTypes } from "sequelize";
 import db from "./db.js";
 
 const Post = db.define('Postagem', {
+        id: {
+            type: DataTypes.INTEGER,
+            autoIncrement: true,
+            primaryKey: true
+        },
         numSerie: {
             type: DataTypes.STRING(60),
-            primaryKey: true
+            allowNull: false,
+            unique: true
         },
         modeloImp: {
             type: DataTypes.STRING(30),

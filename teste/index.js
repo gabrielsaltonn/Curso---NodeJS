@@ -55,6 +55,15 @@ app.post('/add', async function(req, res){
     }
 })
 
+app.post('/deletar/:id', async function(req, res){
+    try{
+        await Post.destroy({where: { 'id': req.params.id } })
+        res.redirect('/')
+    } catch (erro) {
+        res.send('Essa impressora não existe! ' + erro)
+    }
+})
+
 // Rota com o servidor local
 sequelize.sync().then(() => {
     app.listen(3000, () => {

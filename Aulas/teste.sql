@@ -1,5 +1,5 @@
-INSERT INTO cadastroImpressoras
-(numSerie, modeloImp, ip_address, bucFila, setor, coluna)
+INSERT INTO postagem
+(numSerie, modeloImp, ipAddress, bucFila, setor, coluna, createdAt, updatedAt)
 VALUES
 ('088WB07K813FG4','SL-M4080FX',INET6_ATON('127.0.0.1'),'BACKUP',NULL,NULL),
 ('0A39BJNJB00001','K7500LX',NULL,'BACKUP','FATURAMENTO',NULL),

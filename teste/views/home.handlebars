@@ -1,13 +1,19 @@
-<div style="text-align: center;">
+<div class="pagina-lista">
     <h1>Impressoras cadastradas:</h1>
 
-    <table border="1" style="margin: 20px auto;">
+    <table class="tabela-impressoras">
         <tr>
+            <th>Ação</th>
             <th>Nº Série</th>
             <th>Modelo</th>
         </tr>
         {{#each posts}}
         <tr>
+            <td class="col-acao">
+                <form action="/deletar/{{id}}" method="POST" class="formDel">
+                    <button type="submit" class="btn-del">X</button>
+                </form>
+            </td>
             <td>{{numSerie}}</td>
             <td>{{modeloImp}}</td>
         </tr>

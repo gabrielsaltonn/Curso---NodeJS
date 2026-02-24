@@ -1,23 +1,27 @@
-<form action="/add" method="post">
-    <h1>Cadastrar Impressora</h1>
+<div class="pagina-cadastro">
+    <form action="/add" method="post" class="form-cadastro">
+        <h1>Cadastrar Impressora</h1>
 
-    <label>Número de série:</label>
-    <input type="text" name="numSerie" required>
+        <label>Número de série:</label>
+        <input type="text" name="numSerie" required>
 
-    <label>Modelo:</label>
-    <input type="text" name="modeloImp" required>
+        <label>Modelo:</label>
+        <input type="text" name="modeloImp" required>
 
-    <label>IP:</label>
-    <input type="text" name="ipAddress">
+        <label>IP:</label>
+        <input type="text" name="ipAddress">
 
-    <label>BUC/Fila:</label>
-    <input type="text" name="bucFila">
+        <label>BUC/Fila:</label>
+        <input type="text" name="bucFila">
 
-    <label>Setor:</label>
-    <input type="text" name="setor">
+        <label>Setor:</label>
+        <input type="text" name="setor">
 
-    <label>Coluna:</label>
-    <input type="text" name="coluna">
+        <label>Coluna:</label>
+        <input type="text" name="coluna">
 
-    <button type="submit">Cadastrar impressora</button>
-</form>
+        <button type="submit" class="btn-cadastrar">
+            Cadastrar impressora
+        </button>
+    </form>
+</div>
